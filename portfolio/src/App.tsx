@@ -3,9 +3,9 @@ import Home from "./home";
 import { Route, Routes } from "react-router-dom"; 
 import Education from "./education";
 import Experiences from "./experiences";
-// import Skills from "./skills";
-// import Projects from "./projects";
-// import Contact from "./contact";
+import Skills from "./Skills";
+import Projects from "./projects";
+ import Contact from "./contact";
 
 function App() {
   return (
@@ -123,9 +123,9 @@ function App() {
             <Route path="*" element={<Home />} />
             <Route path="/education" element={<Education />} />
             <Route path="/experiences" element={<Experiences />} />
-            {/* <Route path="/skills" element={<Skills />} />
+             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} /> */}
+           <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
       </div>

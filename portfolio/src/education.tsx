@@ -59,7 +59,7 @@ export default function Education() {
                         margin: "0 auto 3rem auto",
                     }}
                 >
-                    A journey of learning, growth, and discovery. Here’s a summary of my academic background and achievements.
+                 A journey of learning, growth, and discovery. Here’s a summary of my academic background and achievements.
                 </p>
                 <div
                     style={{

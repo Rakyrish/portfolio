@@ -5,7 +5,7 @@ const menuItems = [
   { label: "Home", path: "/home" },
   { label: "Education Background", path: "/education" },
   { label: "Experiences", path: "/experiences" },
-  { label: "Skills", path: "/skills" },
+  { label: "Skills", path: "/Skills" },
   { label: "Projects", path: "/projects" },
   { label: "Contact Me", path: "/contact" },
 ];
@@ -58,13 +58,58 @@ function Menu() {
               border:
                 active === item.label || location.pathname === item.path
                   ? "2px solid #3ac3e2ff"
-                  : "2px solid transparent",
+                  : "0.5px solid #fff",
             }}
           >
             {item.label}
           </h1>
         </Link>
       ))}
+      <div >
+        <a
+          href="/kariuki's.pdf"
+          download
+          style={{
+        display: "inline-flex",
+        alignItems: "center",
+        background: "#27ae60",
+        color: "#fff",
+        border: "none",
+        borderRadius: "8px",
+        padding: "12px 20px",
+        fontSize: "1rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        textDecoration: "none",
+        gap: "8px",
+        boxShadow: "0 2px 8px rgba(39,174,96,0.15)",
+        transition: "background 0.2s",
+          }}
+        >
+          <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 24 24"
+        style={{ marginRight: "6px" }}
+          >
+        <path
+          fill="currentColor"
+          d="M12 16a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v10a1 1 0 0 1-1 1zm-4.707-3.707a1 1 0 0 1 1.414 0L11 14.586V5a1 1 0 1 1 2 0v9.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z"
+        />
+        <rect
+          width="18"
+          height="2"
+          x="3"
+          y="19"
+          fill="currentColor"
+          rx="1"
+        />
+          </svg>
+          Download Resume
+        </a>
+      </div>
     </div>
   );
 }
