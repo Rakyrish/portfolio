@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 
 const menuItems = [
   { label: "Home", path: "/home" },
@@ -13,22 +15,24 @@ const menuItems = [
 function Menu() {
   const location = useLocation();
   const [active, setActive] = useState<string | null>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div
       style={{
-        position: "fixed",        // ✅ keeps it fixed
-        // top: 0,                   // stick to top
-        // left: 0,                  // stick to left
-        height: "100vh",          // full height
-        width: "280px",           // sidebar width
+        position: "fixed",        
+        // top: 0,                  
+        // left: 0,                  
+        height: "100vh",          
+        width: isMobile ?"280px" : "250px",           
         background: "#5b91b5ff",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
         padding: "24px",
         gap: "16px",
-        boxShadow: "2px 0 8px rgba(0,0,0,0.1)", // optional shadow
+        boxShadow: "2px 0 8px rgba(0,0,0,0.1)", 
        
       }}
     >
@@ -41,6 +45,8 @@ function Menu() {
         >
           <h1
             style={{
+              whiteSpace: "nowrap",
+              flexWrap: "nowrap",
               cursor: "pointer",
               fontSize: "1.5rem",
               margin: 0,
