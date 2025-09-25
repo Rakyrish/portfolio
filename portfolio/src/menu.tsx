@@ -12,7 +12,12 @@ const menuItems = [
   { label: "Contact Me", path: "/contact" },
 ];
 
-function Menu() {
+type MenuProps = {
+  menuOpen?: boolean;
+  setMenuOpen: (open: boolean) => void;
+};
+
+function Menu({ menuOpen, setMenuOpen }: MenuProps) {
   const location = useLocation();
   const [active, setActive] = useState<string | null>(null);
   const theme = useTheme();
@@ -41,7 +46,10 @@ function Menu() {
           key={item.label}
           to={item.path}
           style={{ textDecoration: "none" }}
-          onClick={() => setActive(item.label)}
+          onClick={() => {
+            setActive(item.label);
+           isMobile ? setMenuOpen(!menuOpen) : "";
+          }}
         >
           <h1
             style={{

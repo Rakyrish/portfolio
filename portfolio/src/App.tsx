@@ -106,7 +106,7 @@ function App() {
             left: 0,
           }}
         >
-          <Menu />
+          <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </aside>
       )}
 
@@ -137,7 +137,7 @@ function App() {
           >
             ✖ Close
           </button>
-          <Menu />
+          <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </aside>
       )}
 
