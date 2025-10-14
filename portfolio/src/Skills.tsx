@@ -48,7 +48,7 @@ function Skills() {
             gap: "12px",
           }}
         >
-          {["Graphic Design", "Frontend Development", "Backend Development", "Fullstack Development", "Docker Tool"].map(
+          {["Graphic Design", "Frontend Development", "Backend Development", "Fullstack Development", "Docker Tool", "ESP32"].map(
             (skill) => (
               <li
                 key={skill}

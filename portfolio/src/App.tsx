@@ -38,11 +38,11 @@ function App() {
         {/* Profile + Name */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <img
-            src="./profile.png"
+            src="./profile2.jpg"
             alt="Profile"
             style={{
-              width: "55px",
-              height: "55px",
+              width: "60px",
+              height: "60px",
               borderRadius: "50%",
               border: "2px solid #fff",
               boxShadow: "0 2px 6px rgba(44,75,96,0.15)",
