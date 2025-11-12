@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -10,7 +11,8 @@ export default function Home() {
         overflow: "hidden",
       }}
     >
-      <video
+      {/* Animated Background Video */}
+      <motion.video
         autoPlay
         loop
         muted
@@ -23,12 +25,14 @@ export default function Home() {
           height: "100%",
           objectFit: "cover",
         }}
+        animate={{ scale: [1, 1.05, 1], x: [0, 20, 0], y: [0, 10, 0] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         <source src="/v.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </motion.video>
 
-    
+      {/* Overlay */}
       <div
         style={{
           position: "absolute",
@@ -52,26 +56,26 @@ export default function Home() {
           padding: "0 1rem",
         }}
       >
-        <h1
-          style={{
-            fontSize: "3rem",
-            fontWeight: "bold",
-            animation: "fadeIn 2s ease-out forwards",
-          }}
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{ fontSize: "3rem", fontWeight: "bold" }}
         >
           I MAKE THINGS
-        </h1>
-        <p
-          style={{
-            marginTop: "1rem",
-            fontSize: "1.25rem",
-            animation: "slideUp 1s ease-out forwards",
-          }}
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          style={{ marginTop: "1rem", fontSize: "1.25rem" }}
         >
           A Full-Stack Developer 🚀 | Building ideas into reality
-        </p>
+        </motion.p>
       </div>
-
     </div>
   );
 }

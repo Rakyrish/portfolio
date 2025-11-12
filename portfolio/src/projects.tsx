@@ -1,3 +1,6 @@
+"use client";
+import { motion, easeInOut } from "framer-motion";
+
 function Projects() {
   const projects = [
     {
@@ -38,51 +41,109 @@ function Projects() {
     },
   ];
 
+  // Parent (container) animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.25,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  // Card animation
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeInOut } },
+  };
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      viewport={{ once: true }}
       style={{
         flex: 1,
-        padding: "40px",
+        padding: "60px 40px",
         background: "linear-gradient(135deg, #173a53 60%, #2563eb 100%)",
         minHeight: "100vh",
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h1
+      {/* Heading animation (left to right) */}
+      <motion.h1
+        initial={{ opacity: 0, x: -80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
         style={{
-          fontSize: "2.5rem",
-          color: "#ffffffff",
-          marginBottom: "30px",
+          fontSize: "2.8rem",
+          color: "#ffffff",
+          marginBottom: "10px",
+          textAlign: "center",
+          letterSpacing: "1px",
         }}
       >
         Projects
-      </h1>
+      </motion.h1>
 
-      <div
+      {/* Subtitle animation (right to left) */}
+      <motion.p
+        initial={{ opacity: 0, x: 80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+        style={{
+          color: "#cbd5e1",
+          fontSize: "1.15rem",
+          textAlign: "center",
+          marginBottom: "40px",
+          maxWidth: "700px",
+          margin: "0 auto 40px auto",
+        }}
+      >
+        A showcase of my latest projects — blending creativity, performance, and clean design.
+      </motion.p>
+
+      {/* Project Cards container with stagger animation */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "20px",
+          gap: "24px",
         }}
       >
         {projects.map((project) => (
-          <div
+          <motion.div
             key={project.title}
+            variants={cardVariants}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
+            }}
             style={{
               background: "#ffffff",
-              borderRadius: "12px",
-              padding: "24px",
+              borderRadius: "14px",
+              padding: "26px",
               boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-              transition: "transform 0.2s",
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              transition: "all 0.3s ease",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-5px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
           >
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
               style={{
                 margin: "0 0 10px 0",
                 fontSize: "1.5rem",
@@ -90,8 +151,12 @@ function Projects() {
               }}
             >
               {project.title}
-            </h2>
-            <p
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
               style={{
                 fontSize: "1rem",
                 color: "#7f8c8d",
@@ -99,12 +164,14 @@ function Projects() {
               }}
             >
               {project.description}
-            </p>
+            </motion.p>
+
             {project.link && project.link !== "#" && (
-              <a
+              <motion.a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
                 style={{
                   textDecoration: "none",
                   color: "#fff",
@@ -112,15 +179,17 @@ function Projects() {
                   padding: "10px 16px",
                   borderRadius: "8px",
                   fontWeight: "bold",
+                  alignSelf: "flex-start",
+                  boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
                 }}
               >
                 View Project
-              </a>
+              </motion.a>
             )}
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 export default function Education() {
     const education = [
         {
@@ -36,7 +39,10 @@ export default function Education() {
             }}
         >
             <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-                <h2
+                <motion.h2
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                     style={{
                         fontSize: "2.75rem",
                         fontWeight: 800,
@@ -48,8 +54,12 @@ export default function Education() {
                     }}
                 >
                     My Education
-                </h2>
-                <p
+                </motion.h2>
+
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
                     style={{
                         textAlign: "center",
                         color: "#cbd5e1",
@@ -59,8 +69,9 @@ export default function Education() {
                         margin: "0 auto 3rem auto",
                     }}
                 >
-                 A journey of learning, growth, and discovery. Here’s a summary of my academic background and achievements.
-                </p>
+                    A journey of learning, growth, and discovery. Here’s a summary of my academic background and achievements.
+                </motion.p>
+
                 <div
                     style={{
                         position: "relative",
@@ -69,8 +80,12 @@ export default function Education() {
                     }}
                 >
                     {education.map((edu, index) => (
-                        <div
+                        <motion.div
                             key={index}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.3, duration: 0.8 }}
                             style={{
                                 marginBottom: "2.5rem",
                                 position: "relative",
@@ -93,26 +108,20 @@ export default function Education() {
                                     zIndex: 2,
                                 }}
                             ></div>
+
                             {/* Card */}
-                            <div
+                            <motion.div
+                                whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(27, 41, 53, 0.22)" }}
+                                transition={{ type: "spring", stiffness: 200, damping: 15 }}
                                 style={{
                                     background: "rgba(255,255,255,0.97)",
                                     padding: "1.5rem 2rem",
                                     borderRadius: "16px",
                                     boxShadow: "0 4px 24px rgba(27, 41, 53, 0.13)",
-                                    transition: "box-shadow 0.3s",
                                     borderLeft: `6px solid ${edu.color}`,
                                     width: "100%",
                                     cursor: "pointer",
                                 }}
-                                onMouseEnter={e =>
-                                    (e.currentTarget.style.boxShadow =
-                                        "0 8px 32px rgba(27, 41, 53, 0.22)")
-                                }
-                                onMouseLeave={e =>
-                                    (e.currentTarget.style.boxShadow =
-                                        "0 4px 24px rgba(27, 41, 53, 0.13)")
-                                }
                             >
                                 <h3
                                     style={{
@@ -145,8 +154,8 @@ export default function Education() {
                                     {edu.year}
                                 </span>
                                 <p style={{ color: "#334155", fontSize: "1rem" }}>{edu.details}</p>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
